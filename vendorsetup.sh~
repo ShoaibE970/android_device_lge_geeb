@@ -14,5 +14,4 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/liquid_geeb.mk
+add_lunch_combo full_geeb-userdebug

@@ -12,7 +12,20 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/liquid_geeb.mk
+# Get the long list of APNs
+$(call inherit-product-if-exists, vendor/omni/config/gsm.mk)
+
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
+PRODUCT_NAME := liquid_geeb
+PRODUCT_DEVICE := geeb
+PRODUCT_BRAND := Android
+PRODUCT_MODEL := Optimus G
+PRODUCT_MANUFACTURER := LGE
+PRODUCT_RESTRICT_VENDOR_FILES := false
+
+# Inherit from hardware-specific part of the product configuration
+$(call inherit-product, device/lge/geeb/device.mk)
+$(call inherit-product-if-exists, vendor/lge/gee/gee-vendor.mk)
